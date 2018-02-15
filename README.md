@@ -83,12 +83,8 @@ return [
 **NOTES:**
 - Yii won't create the database for you, this has to be done manually before you can access it.
 - Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
-
-
 
 ### Migrations
--------
 
 After successfully installation and configuration run the migrate, import and setup command to initialize the module in your project.
 
