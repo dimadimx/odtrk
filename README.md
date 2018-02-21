@@ -52,7 +52,7 @@ You can then install this project template using the following command:
 
 ~~~
 git clone git@github.com:dimadimx/odtrk.git
-php composer.phar install
+php composer.phar install --no-dev
 ~~~
 
 Now you should be able to access the application through the following URL, assuming `basic` is the directory
