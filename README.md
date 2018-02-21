@@ -51,8 +51,8 @@ at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 You can then install this project template using the following command:
 
 ~~~
-php composer.phar global require "fxp/composer-asset-plugin:^1.3.1"
-php composer.phar require --prefer-dist dimadimx/odtrk "*"
+git clone git@github.com:dimadimx/odtrk.git
+php composer.phar install
 ~~~
 
 Now you should be able to access the application through the following URL, assuming `basic` is the directory
