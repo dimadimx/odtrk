@@ -78,8 +78,10 @@ class MainController extends Access
                 $model->save();
                 \Yii::$app->session->set('main_time_s',$model->time_e);
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Yii::$app->getUser()->getReturnUrl());
         } else {
+            if (Yii::$app->request->get()) $model->load(Yii::$app->request->get());
+            Yii::$app->getUser()->setReturnUrl(Yii::$app->request->referrer);
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -102,8 +104,10 @@ class MainController extends Access
             } else {
                 $model->save();
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Yii::$app->getUser()->getReturnUrl());
         } else {
+            if (Yii::$app->request->get()) $model->load(Yii::$app->request->get());
+            Yii::$app->getUser()->setReturnUrl(Yii::$app->request->referrer);
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -120,7 +124,7 @@ class MainController extends Access
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**

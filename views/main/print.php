@@ -11,6 +11,17 @@ $this->title = 'Вхідні дані';
 $sum = $searchModel->sumAll();
 $dateFormat = $searchModel->between ? 'php:M Y' : 'php:d-m-Y';
 ?>
+<style>
+    .container {
+        font-size:13px;
+    }
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding:2px;
+    }
+    h3, .h3,h4, .h4 {
+        margin: 5px;
+    }
+</style>
 <div class="container page">
     <div class="row">
         <div class="col-sm-12 text-center"><h3>ВІДОМІСТЬ</h3></div>
@@ -54,6 +65,7 @@ $dateFormat = $searchModel->between ? 'php:M Y' : 'php:d-m-Y';
                         'value'     => function ($data) {
                             return @$data->speech->name;
                         },
+                        'footer'    => '<div class="kv-align-right">Власне:</div>',
                         'filter'    => \app\models\Speech::getList()
                     ],
                     [
@@ -62,6 +74,7 @@ $dateFormat = $searchModel->between ? 'php:M Y' : 'php:d-m-Y';
                         'value'     => function ($data) {
                             return @$data->code->name;
                         },
+                        'footer'    => "<div class='kv-align-left'>{$sum['secondSum']}хв.</div>",
                         'filter'    => \app\models\Code::getList()
                     ],
                     // 'comment:ntext',
@@ -70,13 +83,14 @@ $dateFormat = $searchModel->between ? 'php:M Y' : 'php:d-m-Y';
                         'label'     => 'Хронометраж',
                         'attribute' => 'time_e',
                         'value'     => function ($data) {
-                            return $data->time_s.'-'.$data->time_e;
+                            return date('H:i',strtotime($data->time_s)).'-'.date('H:i',strtotime($data->time_e));
                         },
-                        'footer'    => '<div class="kv-align-right">Власне: <br />Всього:</div>',
+                        'footer'    => '<div class="kv-align-right">Всього:</div>',
                     ],
                     [
+                        'label'     => 'Трив.хв',
                         'attribute' => 'sum',
-                        'footer'    => "<div class='kv-align-left'>{$sum['secondSum']} хв. <br />{$sum['allSum']} хв.</div>",
+                        'footer'    => "<div class='kv-align-left'>{$sum['allSum']}хв.</div>",
                     ],
                     // 'date',
                     // 'kanal',

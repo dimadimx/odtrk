@@ -120,20 +120,20 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    'footer'    => 'test12',
                 ],
             ],
-            'beforeFooter' => [
-                [
-                    'columns' => [
-                        ['content' => 'test'],
-                        ['content' => 'test2']
-                    ]
-                ],
-                [
-                    'columns' => [
-                        ['content' => 'test3'],
-                        ['content' => 'test4']
-                    ]
-                ]
-            ],
+//            'beforeFooter' => [
+//                [
+//                    'columns' => [
+//                        ['content' => 'test'],
+//                        ['content' => 'test2']
+//                    ]
+//                ],
+//                [
+//                    'columns' => [
+//                        ['content' => 'test3'],
+//                        ['content' => 'test4']
+//                    ]
+//                ]
+//            ],
             'showFooter' => true,
             'responsive'=>true,
             'hover'=>true,

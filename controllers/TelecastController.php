@@ -66,8 +66,9 @@ class TelecastController extends Access
         $model = new Telecast();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Yii::$app->getUser()->getReturnUrl());
         } else {
+            Yii::$app->getUser()->setReturnUrl(Yii::$app->request->referrer);
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -85,8 +86,9 @@ class TelecastController extends Access
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Yii::$app->getUser()->getReturnUrl());
         } else {
+            Yii::$app->getUser()->setReturnUrl(Yii::$app->request->referrer);
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -103,7 +105,7 @@ class TelecastController extends Access
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**

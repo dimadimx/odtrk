@@ -26,10 +26,10 @@ use kartik\date\DatePicker;
 
         <div class="row">
             <div class="col-sm-6">
-                <?php if(!empty(\Yii::$app->session->get('template_time_s'))) $model->time_s = \Yii::$app->session->get('template_time_s'); ?>
+                <?php if(empty($model->time_s) && !empty(\Yii::$app->session->get('template_time_s'))) $model->time_s = \Yii::$app->session->get('template_time_s'); ?>
                 <?= $form->field($model, 'time_s')->widget(TimePicker::classname(), [
                         'pluginOptions' => [
-                            'showSeconds'  => false,
+	                        'showSeconds'  => true,
                             'showMeridian' => false,
                             'minuteStep'   => 1,
                         ]
@@ -39,7 +39,7 @@ use kartik\date\DatePicker;
             <div class="col-sm-6">
                 <?= $form->field($model, 'time_e')->widget(TimePicker::classname(), [
                         'pluginOptions' => [
-                            'showSeconds'  => false,
+	                        'showSeconds'  => true,
                             'showMeridian' => false,
                             'minuteStep'   => 1,
                         ]

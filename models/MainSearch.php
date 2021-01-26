@@ -58,7 +58,7 @@ class MainSearch extends Main
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
+            'sort' => ['defaultOrder' => ['time_s' => SORT_ASC]]
         ]);
 
         $this->load($params);
@@ -95,8 +95,8 @@ class MainSearch extends Main
 
         if ($this->print === true) {
             $dataProvider->sort = ['defaultOrder' => ['date' => SORT_ASC, 'time_s' => SORT_ASC]];
-            $dataProvider->pagination = false;
         }
+        $dataProvider->pagination = false;
 
         return $dataProvider;
     }

@@ -19,7 +19,8 @@ class TemplateSetupSearch extends TemplateSetup
     public function rules()
     {
         return [
-            [['id', 'template_id', 'telecast_id', 'genre_id', 'speech_id', 'code_id', 'sum', 'kanal', 'micf', 'role'], 'integer'],
+            [['id', 'template_id', 'telecast_id', 'genre_id', 'speech_id', 'code_id', 'kanal', 'micf', 'role'], 'integer'],
+            [['sum'], 'number'],
             [['comment', 'time_s', 'time_e', 'sum_all'], 'safe'],
         ];
     }
@@ -48,7 +49,7 @@ class TemplateSetupSearch extends TemplateSetup
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
+            'sort' => ['defaultOrder' => ['time_s' => SORT_ASC]]
         ]);
 
         $this->load($params);

@@ -91,7 +91,7 @@ $sum = $searchModel->sumAll();
             'toolbar' => [
                 [
                     'content'=>
-                        Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'], [
+                        Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create','TemplateSetup'=>Yii::$app->getRequest()->getQueryParam('TemplateSetupSearch')], [
                             'title'=>Yii::t('app', 'Create'),
                             'class'=>'btn btn-success'
                         ]) . ' '.
